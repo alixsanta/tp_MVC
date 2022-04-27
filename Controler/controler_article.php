@@ -5,11 +5,11 @@
     include './vue/vue_article.php';
 
 
-    if(isset($_POST['nom_article']) AND isset($_POST['prix_article']) !=''){
+    if(isset($_POST['nom_article']) AND isset($_POST['prix_article']) AND isset($_POST['nom_article']) !='' AND isset($_POST['prix_article']) !=''){
             $nom = $_POST['nom_article'];
             $prix =$_POST['prix_article'];
-
-        addArticle($bdd, $nom, $prix);
+        $article = new Article($nom,$prix);
+        $article->addArticle($bdd);
         echo "$nom a bien été ajouté !";
     }
     else{
